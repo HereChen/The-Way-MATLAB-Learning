@@ -1,0 +1,51 @@
+% 代码前 \vspace{-0.8cm}
+% 图片画布18cm，设置宽度width=0.9\textwidth
+
+\documentclass[listof = totoc]{article}
+% 加入listof = totoc以解决代码无法列入目录
+
+\input{format.cls}
+
+\title{MATLAB学习笔记}
+\author{陈磊}
+\date{\today}
+
+
+\begin{document}
+
+% \renewcommand{\abstractname}{摘要}
+% \renewcommand{\contentsname}{目录}
+% \renewcommand{\tablename}{表格}
+\renewcommand{\lstlistlistingname}{List of Examples}
+\renewcommand{\lstlistingname}{Example}
+\newcommand\BookTitle{MATLAB学习笔记}
+
+\pagestyle{fancy}
+\fancyhead[L]{{\normalfont\small\rmfamily\nouppercase{\leftmark}}}
+\fancyhead[C]{{\normalfont\small\rmfamily\nouppercase{\rightmark}}}
+\fancyhead[R]{{\thepage}}
+\fancyfoot[L]{{\small\kai\BookTitle}}
+\fancyfoot[C]{}
+\fancyfoot[R]{{\url{http://herechen.github.io}}}
+
+
+\include{abstract}
+
+\begin{multicols}{2}
+\tableofcontents
+\listoftables
+\listoffigures
+\lstlistoflistings
+\end{multicols}
+
+\graphicspath{{diagrams/}}
+
+\include{secJustStart}
+\include{secFeaturesSome}
+\include{secFunctionsSome}
+\include{secSkillsSome}
+\include{secEfficientCoding}
+\include{secSpiceHere}
+\include{appendix}
+
+\end{document}

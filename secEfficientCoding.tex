@@ -1,0 +1,102 @@
+\section{高效编程}
+
+\subsection{profile}
+ 通过 profile 这个工具来查看执行程序中占用时间比例较大的部分,并作有针对性的优化. profile on,profile viewer % go on
+
+\subsection{数据类型}
+ double,cell
+
+\subsection{预分配内存}
+ 为矩阵（或向量）预分配内存,并尽量避免改变矩阵的大小.为什么预分配内存呢？实际上,申请新的内存本身就是一种耗费.每当申请需要新的内存存储变量时,MATLAB 都会先查找是否有足够并且逻辑上是连续的内存空间来存储（若没有则会内存溢出,无法继续执行程序）. 对于矩阵,每次对它添加元素时,其所占内存就在改变,这种改变在地址上的本质是,它不是在原有的基础上添加,而是找到一块合适的地址之后,存储到新的空间上,并删除原来空间上的数据.
+
+  \vspace{-0.8cm}
+  \begin{lstlisting}[caption = 预分配内存]
+    n = 1e+7;
+    % 未初始化赋值
+    tic
+    for i=1:n
+        a(i) = i;
+    end
+    toc
+
+    % 初始化后赋值
+    tic
+    b = zeros(1,n,'double');
+    for i=1:n
+        b(i) = i;
+    end
+    toc
+  \end{lstlisting}
+
+  \vspace{-0.8cm}
+  \begin{lstlisting}
+    Elapsed time is 4.193847 seconds.
+    Elapsed time is 0.177962 seconds.
+  \end{lstlisting}
+
+\subsection{临时变量}
+ 尽量少使用临时变量,毕竟申请内存是一件耗费的事情.
+
+\subsection{MATLAB 建议}
+ 根据 MATLAB 建议编写程序（有时候编程会出现黄色下划线）. 当然,不是任何时候都根据它的建议来,有时候我们也发现 MATLAB 会“多管闲事”.
+
+\subsection{矩阵存储方式}
+ 矩阵的存储方式以列优先存储,即我们在计算时尽量采用列优先的方式.\\% 此处加一例,两重for 循环的计算.
+
+  \vspace{-0.8cm}
+  \begin{lstlisting}[caption = 矩阵存储的方式]
+    n = 5*1e+3;
+    A = rand(n , n);
+    B = zeros(n , n);
+
+    % 以行存取
+    tic
+    for i = 1:n
+        B(i , :) = A(i , :);
+    end
+    toc
+
+    % 以列存取
+    tic
+    for i = 1:n
+        B(: , i) = A(: , i);
+    end
+    toc
+  \end{lstlisting}
+
+  \vspace{-0.8cm}
+  \begin{lstlisting}
+    Elapsed time is 0.945340 seconds.
+    Elapsed time is 0.150333 seconds.
+  \end{lstlisting}
+
+\subsection{函数类型}
+ 不同函数类型的执行效率并一样,在此仅以符号函数和匿名函数作为对比对象.
+
+  \vspace{-0.8cm}
+  \begin{lstlisting}[caption = 函数类型]
+    % 符号函数
+    syms fun1(x);
+    fun1(x) = x^3 + x^2 + x +1;
+    tic
+    fun1(5);
+    toc
+
+    % 匿名函数
+    fun2 = @(x)x^3 + x^2 + x +1;
+    tic
+    fun2(5);
+    toc
+  \end{lstlisting}
+
+  \vspace{-0.8cm}
+  \begin{lstlisting}
+    Elapsed time is 0.006139 seconds.
+    Elapsed time is 0.000074 seconds.
+  \end{lstlisting}
+
+\subsection{并行计算}
+ 所谓并行计算,则是让多个工作同时进行以节省时间,而这些工作之间并不存在数据上的依赖.matlabpool parfor
+
+\subsection{混合编程}
+ ....尚未实践.
