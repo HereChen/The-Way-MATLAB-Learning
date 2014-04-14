@@ -92,4 +92,4 @@ parsep=0pt plus 2pt minus 2pt]}
 \newcommand\myenddot{\end{itemize}}
 
 % 其他------------------------------------------------------------------
-\renewcommand{\today}{\the\year-\the\month-\the\day}
+% \renewcommand{\today}{\the\year-\the\month-\the\day}

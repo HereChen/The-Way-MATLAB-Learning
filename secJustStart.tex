@@ -1,26 +1,25 @@
 ﻿\section{学途伊始}
 最开始学习MATLAB是从脚本开始的,写一段然后就选中代码按F9这种.后来逐渐需
-要把一些通用或常用的脚本写成函数,需要的时候一句话就可以调用了.这大概也
+要把一些通用或常用的脚本写成函数,需要的时候一条语句就可以实现.这大概也
 就是整体上我的学途历程了.\par
 再往后,就开始考虑效率,接触一些方便好用的功能,考虑算法设计和
-MATLAB编程特性的结合,如何去调试程序等等.\par
-那么,我们以脚本和函数开始.
+MATLAB编程特性的结合,如何去调试程序等等.
 
 \subsection{窗口}
 MATLAB有几个基本的窗口: Command Window用于输出结果以及执行命令之用; Editor
 则作为编辑代码之用;在Workspace可以看到当前保存的变量; Command History保
-存了执行过的命令的历史记录; Current Folder是当前目录,方便了管理多个文件编
-辑的需求.
+存了执行过的命令的历史记录; Current Folder是当前目录,方便了文件和资源管理.
 
 \subsection{脚本}
-也不知道如何解释脚本(Script)这个词才好.在MATLAB里面Ctrl+N新建一个后缀
-为m的文件,也就是通常说的M-file.写入要实现的东西,选中要执行的代码然后按F9就可
-以在Command窗口查看结果.比如给出的例子就包含了注释、一个输出语句以及一
-个矩阵的赋值.
+在MATLAB里面Ctrl+N新建一个后缀
+为m的文件,也就是通常说的M-file.写入要实现的功能,选中要执行的代码然后按F9就可
+以在Command窗口查看输出结果,或者在Workspace中查看保存的变量.比如,下面给出的例子就包含了注释、一个输出语句以及一
+个矩阵的创建.
 
+\vspace{-0.8cm}
 \begin{lstlisting}[caption=第一个脚本]
   disp('Hello MATLAB') % 我是注释,前面一条语句是输出
-  A = [1 2; 3 4];      % 对A赋值,A是一个矩阵,语句不加分号执行会直接输出
+  A = [1 2; 3 4];      % 创建一个矩阵,若句尾不加分号执行时会直接输出
 \end{lstlisting}
 
 \subsection{函数}
@@ -29,6 +28,7 @@ MATLAB有几个基本的窗口: Command Window用于输出结果以及执行命�
 文件执行,需要通过调用的形式来执行.比如下面的这个函数保存为文件之后,可
 以直接在Command窗口调用.
 
+\vspace{-0.8cm}
 \begin{lstlisting}[caption = 第一个函数]
   function sm = twonosum(no1,no2)
   % 两个数之和
@@ -38,125 +38,9 @@ MATLAB有几个基本的窗口: Command Window用于输出结果以及执行命�
 
 \begindot
   \item 保存时需要和函数名一致,上面的例子应保存为twonosum.m;
-  \item Command窗口或脚本调用格式为\mcode{var1 = twonosum(var2,
+  \item Command窗口或脚本调用格式为 \mcode{var1 = twonosum(var2,
       var3)};
   \item 文件twonosum.m所在路径需要添加,这在文中的路径设置中提到;
 \myenddot
 
-\notation{最后的\mcode{end}并非是必须的,可以删除.}
-
-
-\subsection{一个实例}
-通过牛顿法法解非线性方程来展示一个函数的书写,同时也展示了如何调用.在这
-里,实现的内容并不是关键,关键在于展示一种写作风格和实现的方法.
-
-\paragraph{牛顿法算法}
-用牛顿法解方程 \(f(x) = 0\),即用牛顿迭代式通过迭代得到近似解.牛顿法迭代式为
-\[
-    x_{k+1} = x_k - \frac{f(x_k)}{f^{\prime}(x_k)}.
-\]
-牛顿法的几本算法如下,这是后面的实现的框架.      
-\begin{center}
-\begin{supertabular}{l}
-        \hline
-        \bf{input} \(x_0,M,\delta,\varepsilon \) \\
-        \(v\leftarrow f(x_0)\) \\
-        \bf{output} \(0,x_0,v\) \\
-        \bf{if} \(|v|<\varepsilon\) \bf{then stop} \\
-        \bf{for} \(k=1\) \bf{to} \(M\) \bf{do} \\
-        \qquad \(x_1\leftarrow x_0-v/f^{\prime}(x_0)\) \\
-        \qquad \(v\leftarrow f(x_1)\) \\
-        \qquad \bf{output} \(k,x_1,v\) \\
-        \qquad \bf{if} \(|x_1-x_0|<\delta \) \bf{or} \(|v|\leftarrow \varepsilon\) \bf{then stop} \\
-        \qquad \(x_0\leftarrow x_1\) \\
-        \bf{end do} \\
-        \hline
-\end{supertabular}
-\end{center}
-
-\begin{lstlisting}[caption = 牛顿法解非线性方程]
-function root = newton(f, df, x0, maxiter, tol)
-%NEWTON Newton's method for nonlinear equations.
-%
-%   NEWTON's method: x(k+1) = x(k) - f(x(k))/f'(x(k)).
-%
-%   Inputs
-%   f       - nonlinear equation.
-%   df      - derivative of f(x).
-%   x0      - initial value.
-%   maxiter - maximum iterated times.
-%   tol     - precision.
-%
-%   Outputs
-%   root    - root of f(x) = 0.
-
-%   Last Reversion: 2013/11/20  10:56:48
-
-% 初始化,默认参数设置
-if nargin < 5, tol = eps; end
-if nargin < 4, maxiter = 50; end
-
-x_old    = x0;
-x_iter   = x0 + 1;
-times    = 0;
-
-
-IfTrue
-% 输出初值信息
-if true_sig
-        fprintf(' k      iter\n');
-        fprintf('-------+-------------\n');
-        fprintf('%3.0f    | %.7f\n', 0, x_old);
-end
-
-
-% 通过判断是否满足条件作循环
-tic
-while true_sig
-    x_iter = x_old - f(x_old)/df(x_old);
-    times = times + 1;
-    IfTrue
-    x_old = x_iter;
-        fprintf('%3.0f    | %.10f\n', times, x_old);
-end
-time = toc;
-% tic开始计时,toc 结束计时
-
-% 输出迭代次数和迭代时间
-fprintf('\nIterated times is %g.\n', times);
-fprintf('Elapsed time is %g seconds.\n', time);
-
-
-% 输出参数,取最后一个迭代值
-root = x_iter;
-
-
-% 子函数,用以计算循环条件的逻辑值
-    function IfTrue
-        if times == 0
-            true_sig = (times < maxiter) ...
-                   && (abs(x_old - x_iter) > tol) ...
-                   && (abs(f(x_old)) > tol);
-        else
-            true_sig = (times < maxiter) ...
-                   && (abs(x_old - x_iter) > tol) ...
-                   && (abs(f(x_iter)) > tol);
-        end
-    end
-
-end
-\end{lstlisting}        
-
-牛顿法实现的调用的示例如下,这个例子用于求解2的平方根.
-
-\vspace{-0.5cm}
-\begin{lstlisting}
-  f = @(x)x^2 - 2;          % 函数,匿名函数
-  df = @(x)2*x;             % 导数
-  x0 = 3;                   % 迭代初值
-  root = newton(f, df, x0); % 未输入的参数取默认参数
-\end{lstlisting}
-
-这个实例涉及到函数、子函数、计时、逻辑运算、默认参数设置、匿名函数,以及模仿
-MATLAB内置函数写函数注释.最后再给出了运行示例,算是一个完整的算法实现.实
-际上,未必都要如此编写程序,根据个人需求,达到目的即可,这里只作为一个范例.
+\notation{最后的 \mcode{end} 并非是必须的,可以删除.}
