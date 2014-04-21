@@ -59,22 +59,34 @@
 \subsection{路径设置}
 设置路径的方法:
 \begindot
-  \item 鼠标点击实现. Home$\rightarrow$set path. Add Folder...只添加选定文件夹的路径, Add with Subfolders...添加指定文件夹及其所有子文件夹路径.
+\item 鼠标点击实现. Home$\rightarrow$set path. Add Folder...只添加选定文件夹的路径, Add with Subfolders...添加指定文件夹及其所有子文件夹路径.
 
-    \begin{figure}[htbp]
-      \centering
-      \includegraphics[width=0.9\textwidth]{setpath.png}
-      \caption{添加路径}
-    \end{figure}
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{setpath.png}
+    \caption{添加路径}
+  \end{figure}
 
-  \item 通过命令添加,比如:
+\item 通过命令添加,比如:
 
-    \vspace{-0.8cm}
-    \begin{lstlisting}[caption = 添加路径]
-      addpath('D:\matlab_file')
-    \end{lstlisting}
+\vspace{-0.8cm}
+\begin{lstlisting}[caption = 添加路径]
+  addpath('D:\matlab_file')
+\end{lstlisting}
+
+\item 直接通过路径文件设置.
+
+\vspace{-0.4cm}
+\begin{lstlisting}
+  >> which pathdef
+  C:\Program\MATLAB\R2013a\toolbox\local\pathdef.m
+  >> edit('C:\Program\MATLAB\R2013a\toolbox\local\pathdef.m')
+\end{lstlisting}
+
+\item 设置工作目录. MATLAB默认的工作目录可以通过输入 \mcode{userpath} 来查看,更改则通过 \mcode{userpath(mypath)} 来实现,其中 \mcode{mypath} 是自定义的路径字符串.设置工作目录的意义在于,将需要的文件放在放在工作目录,就无需额外添加路径了.
 
 \myenddot
+
 添加路径的意义在于,这使得我们期待调用的脚本、函数或资源等能够被找到.
 
 \notation{如果路径中包含空格,用 \mcode{' '} 来表示空格,即两个单引号,中间包含一个空格.}
