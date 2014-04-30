@@ -48,7 +48,7 @@ body={390pt,530pt},marginparsep=10pt,marginpar=50pt]{geometry}
   language = Matlab,
   keywordstyle = \color{blue},                % 关键词颜色
   commentstyle = \color{commentcolor},        % 注释颜色
-  basicstyle = \linespread{1}\fontspec{Courier New}\small,  % 代码字体
+  basicstyle = \linespread{1}\fontspec{Consolas}\small,  % 代码字体
   emph={warning,pcode},                       % 自定义关键词
   emphstyle=\color{blue},                     % 自定义关键词颜色
   texcl = true}
