@@ -169,7 +169,7 @@ startup.m是在MATLAB启动时就执行的脚本.若是需要它,我们需要做
 
 
 \subsection{断点调试}
-这里是针对function,通过设置断点找出错误所在,亦或了解代码执行过程.在需要暂停的一行或多行前用鼠标点击设置断点.
+设置断点是调试程序常用的方法,可以用这种方法来找出错误所在,或者了解代码执行过程.在需要暂停的一行或多行前用鼠标点击设置断点.
 
 \begin{figure}[htbp]
   \centering
@@ -247,6 +247,8 @@ startup.m是在MATLAB启动时就执行的脚本.若是需要它,我们需要做
 
 注意上面命令之间的空格.编译得到的同名exe文件在MATLAB安装目录的bin文件夹下,或者在所编译文件所在的文件夹下.
 
+
+
 \subsection{警告和错误}
 在编写程序时,会用一些输出来标识警告或者错误,以下是针对这个问题的方法.
 
@@ -258,13 +260,24 @@ startup.m是在MATLAB启动时就执行的脚本.若是需要它,我们需要做
 
 \vspace{-0.8cm}
 \begin{lstlisting}[caption = 警告输出]
-  warning('edit your text here.')};
+  warning('edit your text here.');
 \end{lstlisting}
 
 \vspace{-0.8cm}
 \begin{lstlisting}[caption = 错误输出]
-  error('edit your text here.')};
+  error('edit your text here.');
 \end{lstlisting}
 
 \notation{\mcode{warning} 和 \mcode{error} 可以像 \mcode{fprintf} 一样输出字符串或者数值.例如: \\
 \mcode{str = 'I am a string'; warning('\%s',str)}}
+
+
+\subsection{显示格式}
+Command 窗口的默认显示格式是short,此时显示小数时最多显示4位小数.常用的切换有显示更多的小数,以及将小数作为分数显示.这里介绍三种格式切换,更多的查看 \mcode{help format}.
+
+\vspace{-0.8cm}
+\begin{lstlisting}[caption = Command窗口显示格式]
+  format short        % 默认格式
+  format long         % 显示更多小数位
+  format rat          % 以分数形式显示
+\end{lstlisting}
