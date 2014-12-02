@@ -6,55 +6,15 @@
 % 加入listof = totoc以解决代码无法列入目录
 
 \input{format.cls}
-
-%----------------------------------------------------------------------------------------
-%	TITLE PAGE
-%----------------------------------------------------------------------------------------
-% http://www.latextemplates.com/cat/title-pages
-\newcommand*{\titleCover}{\begingroup % Create the command for including the title page in the document
-\hbox{ % Horizontal box
-\hspace*{0.05\textwidth} % Whitespace to the left of the title page
-\rule{1pt}{\textheight} % Vertical line
-\hspace*{0.05\textwidth} % Whitespace between the vertical line and title page text
-\parbox[b]{0.75\textwidth}{ % Paragraph box which restricts text to less than the width of the page
-
-{\noindent\Huge\bfseries MATLAB \\[0.5\baselineskip] 学习笔记 v0.1.2}\\[2\baselineskip] % Title
-{\large \textit{MATLAB学习之路：功能与效率}}\\[4\baselineskip] % Tagline or further description
-{\Large \textsc{陈磊}} % Author name
-
-\vspace{0.5\textheight} % Whitespace between the title block and the publisher
-{\noindent \today\\
-\textit{email chenlei.here@gmail.com\\
-blog {\href{http://herechen.github.io}{herechen.github.io}}\\source {\href{https://github.com/HereChen/TheWayMATLABLearning}{https://github.com/HereChen/TheWayMATLABLearning}} }}\\
-[0.0\baselineskip] % Publisher and logo
-}}
-\endgroup}
-
-% \title{MATLAB学习笔记}
-% \author{陈磊\\chenlei.here@gmail.com}
-% \date{\today}
+\input{title.cls}
 
 
 \begin{document}
 
-% \renewcommand{\abstractname}{摘要}
-% \renewcommand{\contentsname}{目录}
-% \renewcommand{\tablename}{表格}
-\renewcommand{\lstlistlistingname}{List of Examples}
-\renewcommand{\lstlistingname}{Example}
-\newcommand\BookTitle{MATLAB学习笔记}
-
-% \pagestyle{fancy}
-% \fancyhead[L]{{\normalfont\small\rmfamily\nouppercase{\leftmark}}}
-% \fancyhead[C]{{\normalfont\small\rmfamily\nouppercase{\rightmark}}}
-% \fancyhead[R]{{\thepage}}
-% \fancyfoot[L]{{\small\kai\BookTitle}}
-% \fancyfoot[C]{}
-% \fancyfoot[R]{{\href{http://herechen.github.io}{herechen.github.io}}}
-
 \thispagestyle{empty}
 \titleCover
 % \maketitle
+\setcounter{page}{0}
 \include{abstract}
 
 \begin{multicols}{2}
@@ -65,7 +25,6 @@ blog {\href{http://herechen.github.io}{herechen.github.io}}\\source {\href{https
 \end{multicols}
 
 \graphicspath{{diagrams/}}
-
 \include{secJustStart}
 \include{secFeaturesSome}
 \include{secFunctionsSome}

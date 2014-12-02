@@ -5,17 +5,16 @@
 
 \subsection{内存溢出及解决方案}
 
-\paragraph{内存溢出}所谓内存溢出,即  Out of memoery.
+\paragraph{内存溢出}所谓内存溢出,也就是计算时出现的 Out of memoery.
 
 \begin{figure}[htbp]
-\centering
-\includegraphics[width=9cm]{diagrams/memoryout.jpg}
+\includegraphics[width=0.6\textwidth]{diagrams/memoryout}
 \caption{内存溢出和内存查看}
 \end{figure}
 
-\vspace{-1.0cm}
+\vspace{-0.8cm}
 \begin{lstlisting}[caption = 生成随机矩阵]
-matrix = rand(2e+5,2e+5);
+  matrix = rand(2e+5,2e+5);
 \end{lstlisting}
 
 \notation{逐渐增大或减小维数,这样可以查看设备能存储最大矩阵的维数.}
@@ -43,13 +42,13 @@ matrix = rand(2e+5,2e+5);
 
 \vspace{-0.8cm}
 \begin{lstlisting}[caption = 自定义帮助]
-function outputs = myfunction(inputs)
-%MYFUNCTION this function is bulabula...
-%   decrible your function here
-%   see also function1 function2
+  function outputs = myfunction(inputs)
+  %MYFUNCTION this function is bulabula...
+  %   decrible your function here
+  %   see also function1 function2
 
-%   Reversion: 22-Aug-2013
-%   2013/08/22  16:58:27
+  %   Reversion: 22-Aug-2013
+  %   2013/08/22  16:58:27
 \end{lstlisting}
 
 
@@ -66,7 +65,7 @@ function outputs = myfunction(inputs)
 
 
 \subsection{公式打印}
-MATLAB支持\LaTeX的公式输出,在两个地方可能用到公式输出.
+MATLAB支持\LaTeX 的公式输出,在两个地方可能用到公式输出.
 
 \begindot
 \item 图片上的公式
@@ -75,42 +74,44 @@ MATLAB支持\LaTeX的公式输出,在两个地方可能用到公式输出.
 
 \vspace{-0.8cm}
 \begin{lstlisting}[caption = 图像中的公式输出]
-y = title('$$y = \sqrt{x}$$');		% 标题
-set(y,'interpreter','latex');		% 用\LaTeX翻译标题
+  y = title('$$y = \sqrt{x}$$');		% 标题
+  set(y,'interpreter','latex');			% 用LaTeX翻译标题
 \end{lstlisting}
 
 
 
-\subsection{用向量重复构造矩阵}
+\subsection{重复向量以构造矩阵}
 首先解释一下什么是向量重复构造矩阵,比如有一个向量 \mcode{[1 2 3]},现在我打算将它构造成 \mcode{[1 2 3; 1 2 3; 1 2 3]},这就是此小节要解决的内容.
 
 \vspace{-0.8cm}
-\begin{lstlisting}[caption = 用向量重复构造矩阵]
-%\% repmat 函数方法
-clear
-x = 1:1:20000; N = 30000;
-tic
-X = repmat(x, N, 1);
-toc
-%\% 矩阵乘法方法
-clear
-x = 1:1:20000; N = 30000;
-tic
-Y = ones(N,1)*x;
-toc
-%\% 下标方法
-clear
-x = 1:1:20000; N = 30000;
-tic
-Z = x(ones(N, 1), :);
-toc
+\begin{lstlisting}[caption = 重复向量以构造矩阵]
+  %% repmat 函数方法
+  clear
+  x = 1:1:20000; N = 30000;
+  tic
+  X = repmat(x, N, 1);
+  toc
+
+  %% 矩阵乘法方法
+  clear
+  x = 1:1:20000; N = 30000;
+  tic
+  Y = ones(N,1)*x;
+  toc
+  
+  %% 下标方法
+  clear
+  x = 1:1:20000; N = 30000;
+  tic
+  Z = x(ones(N, 1), :);
+  toc
 \end{lstlisting}
 
 \vspace{-0.8cm}
 \begin{lstlisting}
-Elapsed time is 25.953179 seconds.
-Elapsed time is 217.866385 seconds.
-Elapsed time is 13.400210 seconds.
+  Elapsed time is 25.953179 seconds.
+  Elapsed time is 217.866385 seconds.
+  Elapsed time is 13.400210 seconds.
 \end{lstlisting}
 
 实际上, \mcode{repmat} 用到了第三种,在其源码中可以看的到,但它更加通用.如果是数值,首推第三者.
@@ -120,13 +121,13 @@ Elapsed time is 13.400210 seconds.
 
 \vspace{-0.4cm}
 \begin{lstlisting}
->> blkproc([1 2 3 4 5], [1 1], @(x)repmat(x, 3, 2))
+  >> blkproc([1 2 3 4 5], [1 1], @(x)repmat(x, 3, 2))
 
-ans =
+  ans =
 
-1     1     2     2     3     3     4     4     5     5
-1     1     2     2     3     3     4     4     5     5
-1     1     2     2     3     3     4     4     5     5 
+  1     1     2     2     3     3     4     4     5     5
+  1     1     2     2     3     3     4     4     5     5
+  1     1     2     2     3     3     4     4     5     5 
 \end{lstlisting}
 
 \notation{可以考虑用上面的某种方法用向量重复来构造三维的矩阵.}

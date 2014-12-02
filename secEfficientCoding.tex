@@ -24,29 +24,31 @@
 \subsection{预分配内存}
  为矩阵（或向量）预分配内存,并尽量避免改变矩阵的大小.为什么预分配内存呢？实际上,申请新的内存本身就是一种耗费.每当申请需要新的内存存储变量时,MATLAB 都会先查找是否有足够并且逻辑上是连续的内存空间来存储（若没有则会内存溢出,无法继续执行程序）. 对于矩阵,每次对它添加元素时,其所占内存就在改变,这种改变在地址上的本质是,它不是在原有的基础上添加,而是找到一块合适的地址之后,存储到新的空间上,并删除原来空间上的数据.
 
-  \vspace{-0.8cm}
-  \begin{lstlisting}[caption = 是否预分配内存效率对比]
-    n = 1e+7;
-    %\% 未初始化赋值
-    tic
-    for i=1:n
-        a(i) = i;
-    end
-    toc
-    %\% 初始化后赋值
-    tic
-    b = zeros(1,n,'double');
-    for i=1:n
-        b(i) = i;
-    end
-    toc
-  \end{lstlisting}
+\vspace{-0.8cm}
+\begin{lstlisting}[caption = 是否预分配内存效率对比]
+n = 1e+7;
 
-  \vspace{-0.8cm}
-  \begin{lstlisting}
-    Elapsed time is 4.193847 seconds.
-    Elapsed time is 0.177962 seconds.
-  \end{lstlisting}
+%% 未初始化赋值
+tic
+for i=1:n
+    a(i) = i;
+end
+toc
+
+%% 初始化后赋值
+tic
+b = zeros(1,n,'double');
+for i=1:n
+    b(i) = i;
+end
+toc
+\end{lstlisting}
+
+\vspace{-0.8cm}
+\begin{lstlisting}
+Elapsed time is 4.193847 seconds.
+Elapsed time is 0.177962 seconds.
+\end{lstlisting}
 
 
 
@@ -63,24 +65,26 @@
 \subsection{矩阵存储方式}
  矩阵的存储方式以列优先存储,即我们在计算时尽量采用列优先的方式.
 
-  \vspace{-0.8cm}
-  \begin{lstlisting}[caption = 矩阵不同存取方式效率对比]
-    n = 10000;
-    A = rand(n , n);
-    B = zeros(n , n);
-    %\% 以行存取
-    tic
-    for i = 1:n
-        B(i , :) = A(i , :);        % 以行方式赋值 
-    end
-    toc
-    %\% 以列存取
-    tic
-    for i = 1:n
-        B(: , i) = A(: , i);        % 以列方式赋值
-    end
-    toc
-  \end{lstlisting}
+\vspace{-0.8cm}
+\begin{lstlisting}[caption = 矩阵不同存取方式效率对比]
+n = 10000;
+A = rand(n , n);
+B = zeros(n , n);
+
+%% 以行存取
+tic
+for i = 1:n
+    B(i , :) = A(i , :);        % 以行方式赋值 
+end
+toc
+
+%% 以列存取
+tic
+for i = 1:n
+    B(: , i) = A(: , i);        % 以列方式赋值
+end
+toc
+\end{lstlisting}
 
   \vspace{-0.8cm}
   \begin{lstlisting}
@@ -93,13 +97,14 @@
 
   \vspace{-0.8cm}
   \begin{lstlisting}[caption = 不同函数类型效率对比]
-    %\% 符号函数
+    %% 符号函数
     syms fun1(x);
     fun1(x) = x^3 + x^2 + x +1;
     tic
     fun1(5);
     toc
-    %\% 匿名函数
+
+    %% 匿名函数
     fun2 = @(x)x^3 + x^2 + x +1;
     tic
     fun2(5);
@@ -129,13 +134,15 @@
   \begin{lstlisting}[caption = 并行计算parfor与for效率对比]
     matlabpool open 2               % 打开两个worker
     M = 200; a = zeros(M,1);        % 200 次计算
-    %\% for
+
+    %% for
     tic  
     for i = 1:M        
         a(i) = max(eig(rand(M)));   % 取随机矩阵最大特征值
     end 
     toc
-    %\% parfor
+    
+    %% parfor
     tic  
     parfor i = 1:M 
         a(i) = max(eig(rand(M))); 
