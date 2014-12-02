@@ -16,10 +16,10 @@
 6. secEfficientCoding.tex -- 高效编程
 7. secSpiceHere.tex -- 额外兴趣
 8. appendix.tex -- 附录
-9. format.cls.tex -- 宏包和格式设置文件
-10. mcode.sty -- MATLAB 代码列出包
-11. MATLABTips.pdf -- 生成的PDF文档
-
+9. format.cls -- 宏包和格式设置文件
+10. title.cls -- 封面设置
+11. mcode.sty -- MATLAB 代码列出包
+12. MATLABTips.pdf -- 生成的PDF文档
 
 ## MATALB Tips 更新记录
 
