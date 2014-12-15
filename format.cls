@@ -44,7 +44,7 @@ body={390pt,530pt},marginparsep=10pt,marginpar=50pt]{geometry}
   % numberstyle = \scriptsize,
   % frameround = fttt,
   columns = flexible,                         % 确保复制粘贴代码是正常的                          
-  %frame = lines,                              % 边框 trBL single
+  frame = lines,                              % 边框 trBL single
   backgroundcolor = \color{white},            % 背景颜色
   language = MATLAB,
   keywordstyle = \color{blue},                % 关键词颜色
@@ -56,14 +56,15 @@ body={390pt,530pt},marginparsep=10pt,marginpar=50pt]{geometry}
   xleftmargin=17pt,
   framexleftmargin=17pt,
   framexrightmargin=5pt,
-  framexbottommargin=2pt,
+  %framexbottommargin=2pt,
   texcl = false}                              % LaTeX 禁用
 % 在对应的设置中加入 nolol=true 以不列入目录中
 % 只要不加入caption就不会录入目录
-\usepackage{caption}
-\DeclareCaptionFont{white}{\color{white}}
-\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{\hspace{15pt}#1#2#3}}}
-\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white, singlelinecheck=false, margin=0pt, font={bf,footnotesize}}
+% 代码的另一种样式：备用
+% \usepackage{caption}
+% \DeclareCaptionFont{white}{\color{white}}
+% \DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{\hspace{15pt}#1#2#3}}}
+% \captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white, singlelinecheck=false, margin=0pt, font={bf,footnotesize}}
 
 % 表格------------------------------------------------------------------
 \usepackage{multirow,arydshln,multicol,booktabs,float}
