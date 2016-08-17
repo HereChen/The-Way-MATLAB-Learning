@@ -12,3 +12,8 @@ del *.lol /s
 del *.lot /s
 del *.fdb_latexmk /s
 del *.synctex.gz /s
+del *.bcf /s
+del *.nav /s
+del *.snm /s
+del *.xdv /s
+del *.vrb /s
