@@ -8,18 +8,19 @@
 ## 文件说明
 
 0. MATLABTips.tex -- 主文件
-1. abstract.tex -- 摘要
-2. secJustStart.tex -- 学途伊始
-3. secFeaturesSome.tex -- 一些功能
-4. secFunctionsSome.tex -- 一些函数
-5. secSkillsSome.tex -- 一些技巧
-6. secEfficientCoding.tex -- 高效编程
-7. secSpiceHere.tex -- 额外兴趣
-8. appendix.tex -- 附录
+1. sections/abstract.tex -- 摘要
+2. sections/secJustStart.tex -- 学途伊始
+3. sections/secFeaturesSome.tex -- 一些功能
+4. sections/secFunctionsSome.tex -- 一些函数
+5. sections/secSkillsSome.tex -- 一些技巧
+6. sections/secEfficientCoding.tex -- 高效编程
+7. sections/secSpiceHere.tex -- 额外兴趣
+8. sections/appendix.tex -- 附录
 9. format.cls -- 宏包和格式设置文件
-10. title.cls -- 封面设置
+10. sections/cover.cls -- 封面设置
 11. mcode.sty -- MATLAB 代码列出包
 12. MATLABTips.pdf -- 生成的PDF文档
+13. diagrams/ -- 图表
 
 ## MATALB Tips 更新记录
 
