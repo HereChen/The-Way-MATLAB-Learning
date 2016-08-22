@@ -6,29 +6,30 @@
 % 加入listof = totoc以解决代码无法列入目录
 
 \input{format.cls}
+\graphicspath{{diagrams/}} 				% 图片路径
 
 \begin{document}
 
-\input{sections/cover.cls} 			% 封面
+
+\input{sections/cover} 					% 封面
 \thispagestyle{empty}
 \titleCover
 % \maketitle
 \setcounter{page}{0}
 
 
-\input{sections/abstract} 			% 摘要
-\input{sections/content} 			% 目录
+\include{sections/abstract} 			% 摘要
+\include{sections/content} 				% 目录
 
 
-\graphicspath{{diagrams/}} 			% 图片路径
-\input{sections/secJustStart} 		% 章节
-\input{sections/secFeaturesSome}
-\input{sections/secFunctionsSome}
-\input{sections/secSkillsSome}
-\input{sections/secEfficientCoding}
-\input{sections/secSpiceHere}
+\include{sections/secJustStart} 		% 章节
+\include{sections/secFeaturesSome}
+\include{sections/secFunctionsSome}
+\include{sections/secSkillsSome}
+\include{sections/secEfficientCoding}
+\include{sections/secSpiceHere}
 
 
-\input{sections/appendix} 					% 附录
+\include{sections/appendix} 			% 附录
 
 \end{document}

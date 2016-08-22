@@ -22,7 +22,6 @@ body={390pt,530pt},marginparsep=10pt,marginpar=50pt]{geometry}
 \usepackage{color,xcolor}
 \definecolor{commentcolor}{RGB}{34,139,34}
 \definecolor{codecolor}{RGB}{34,139,34}
-\definecolor{mycolor}{RGB}{129,0,0}
 
 % 背景------------------------------------------------------------------
 \usepackage{framed}
@@ -34,8 +33,6 @@ body={390pt,530pt},marginparsep=10pt,marginpar=50pt]{geometry}
 \hypersetup{pdftitle = {Chen's MATLAB Learning},
     colorlinks = true,
     pdfborder = 0 0 0,
-    linkcolor = mycolor,
-    urlcolor = mycolor,
     breaklinks = false}
 
 % 代码------------------------------------------------------------------
@@ -101,7 +98,7 @@ parsep=0pt plus 2pt minus 2pt]}
 % 其他------------------------------------------------------------------
 % \renewcommand{\today}{\the\year-\the\month-\the\day}
 % \renewcommand{\abstractname}{摘要}
-% \renewcommand{\contentsname}{目录}
+% \renewcommand{\contentsname}{\centering 目录}
 % \renewcommand{\tablename}{表格}
 \renewcommand{\lstlistlistingname}{List of Examples}
 \renewcommand{\lstlistingname}{Example}
