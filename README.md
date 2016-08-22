@@ -7,3 +7,7 @@
 
 
 主要内容包括: MATLAB 功能介绍, 函数介绍, 以及编程技巧.
+
+
+- [项目指南](./docs/README.md)
+- [更新日志](./docs/Update.md)
