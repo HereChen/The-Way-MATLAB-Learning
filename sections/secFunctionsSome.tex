@@ -2,8 +2,11 @@
 对于要介绍的函数或命令,在每个说明后面紧接着给出示例,或者是使用是说明.
 
 \begin{itemize}
-\item{eval} -- 将字符串作为MATLAB语句执行. \mcode{eval('[1 2]*3')}
+\item{clc} -- 清空命令窗口
+\item{clear} - 清空工作空间, 清除指定变量用 \mcode{clear var1 var2}
+\item{close} - 关闭窗口, 比如绘图窗口太多, 关闭所有绘图窗口 \mcode{close all}
 \item{help} -- 查看帮助文档. 查看 \mcode{size} 函数帮助, \mcode{help size}
+\item{eval} -- 将字符串作为MATLAB语句执行. \mcode{eval('[1 2]*3')}
 \item{prod} -- 向量元素的连乘. 矩阵同行元素相乘, \mcode{prod([1 2;3 4],2)}
 \item{pause} -- 暂停.暂停5秒, \mcode{pause(5)}
 \item{nnz} -- 矩阵非零元素的个数. \mcode{nnz([0 0 0 1 2])
