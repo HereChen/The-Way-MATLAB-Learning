@@ -5,12 +5,12 @@
 \subsection{分析代码性能}
  通过Profiler这个工具来查看执行程序中占用时间比例,并作有针对性的优化这样可以.
 
-  \vspace{-0.8cm}
-  \begin{lstlisting}[caption = 用Profiler分析代码性能] 
-  profile on                        % 打开profile
-  plot(magic(35))                   % 要执行的代码
-  profile viewer                    % 查看分析结果
-  \end{lstlisting}
+\vspace{-0.8cm}
+\begin{lstlisting}[caption = 用Profiler分析代码性能] 
+profile on                        % 打开profile
+plot(magic(35))                   % 要执行的代码
+profile viewer                    % 查看分析结果
+\end{lstlisting}
 
 分析结果包括每部分的占用时间比例,没个函数或语句的执行时间,点击链接可以进入到下一层,以此来逐层查看.
 
@@ -86,36 +86,36 @@ end
 toc
 \end{lstlisting}
 
-  \vspace{-0.8cm}
-  \begin{lstlisting}
-    Elapsed time is 24.323625 seconds.
-    Elapsed time is 0.621799 seconds.
-  \end{lstlisting}
+\vspace{-0.8cm}
+\begin{lstlisting}
+Elapsed time is 24.323625 seconds.
+Elapsed time is 0.621799 seconds.
+\end{lstlisting}
 
 \subsection{函数类型}
  不同函数类型的执行效率并一样,在此仅以符号函数和匿名函数作为对比对象.
 
-  \vspace{-0.8cm}
-  \begin{lstlisting}[caption = 不同函数类型效率对比]
-    %% 符号函数
-    syms fun1(x);
-    fun1(x) = x^3 + x^2 + x +1;
-    tic
-    fun1(5);
-    toc
+\vspace{-0.8cm}
+\begin{lstlisting}[caption = 不同函数类型效率对比]
+%% 符号函数
+syms fun1(x);
+fun1(x) = x^3 + x^2 + x +1;
+tic
+fun1(5);
+toc
 
-    %% 匿名函数
-    fun2 = @(x)x^3 + x^2 + x +1;
-    tic
-    fun2(5);
-    toc
-  \end{lstlisting}
+%% 匿名函数
+fun2 = @(x)x^3 + x^2 + x +1;
+tic
+fun2(5);
+toc
+\end{lstlisting}
 
-  \vspace{-0.8cm}
-  \begin{lstlisting}
-    Elapsed time is 0.006139 seconds.
-    Elapsed time is 0.000074 seconds.
-  \end{lstlisting}
+\vspace{-0.8cm}
+\begin{lstlisting}
+Elapsed time is 0.006139 seconds.
+Elapsed time is 0.000074 seconds.
+\end{lstlisting}
 
 
 
@@ -130,32 +130,32 @@ toc
  \mcode{parfor} 即 parallel for (并行的 \mcode{for} 语句),可以看作是把 \mcode{for} 循环执行的内容改造成了同时执行的内容. \mcode{matlabpool} 用于打开多核,默认是并没有打开的.\par
  实现并行计算包括两个操作,一是打开多核(或者worker),二是要保证循环计算之间并不存在关联性.
 
-  \vspace{-0.8cm}
-  \begin{lstlisting}[caption = 并行计算parfor与for效率对比]
-    matlabpool open 2               % 打开两个worker
-    M = 200; a = zeros(M,1);        % 200 次计算
+\vspace{-0.8cm}
+\begin{lstlisting}[caption = 并行计算parfor与for效率对比]
+matlabpool open 2               % 打开两个worker
+M = 200; a = zeros(M,1);        % 200 次计算
 
-    %% for
-    tic  
-    for i = 1:M        
-        a(i) = max(eig(rand(M)));   % 取随机矩阵最大特征值
-    end 
-    toc
-    
-    %% parfor
-    tic  
-    parfor i = 1:M 
-        a(i) = max(eig(rand(M))); 
-    end 
-    toc
-    matlabpool close                % 关闭所有worker
-  \end{lstlisting}
+%% for
+tic  
+for i = 1:M        
+    a(i) = max(eig(rand(M)));   % 取随机矩阵最大特征值
+end 
+toc
 
-  \vspace{-0.8cm}
-  \begin{lstlisting}
-    Elapsed time is 11.092022 seconds.
-    Elapsed time is 6.325050 seconds.
-  \end{lstlisting}
+%% parfor
+tic  
+parfor i = 1:M 
+    a(i) = max(eig(rand(M))); 
+end 
+toc
+matlabpool close                % 关闭所有worker
+\end{lstlisting}
+
+\vspace{-0.8cm}
+\begin{lstlisting}
+Elapsed time is 11.092022 seconds.
+Elapsed time is 6.325050 seconds.
+\end{lstlisting}
 
 尽管通常不是用循环来实现的内容,通过转化为不相关的循环计算,就可以用并行计算来实现.
 
@@ -165,3 +165,10 @@ toc
 
 % \subsection{混合编程}
 %  预留.....
+
+
+\subsection{其他}
+
+\begin{itemize}
+    \item \textbf{线性方程组求解} \href{https://zhuanlan.zhihu.com/p/30958676}{MATLAB R2017b新函数介绍之decomposition（加速X$\backslash$y）}. 沒有新版的MATLAB, 无法进行测试. 基本思路是通过分解矩阵加速线性方程组的求解, 而\mcode{decomposition}可以根据矩阵特点选择合适的分解方法. 方程组求解效率可参照数值分析中的消元法和矩阵分解法(比如LU).
+\end{itemize}
