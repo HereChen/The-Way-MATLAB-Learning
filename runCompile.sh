@@ -1,3 +1,3 @@
-REM for Windows
+# for Linux
 xelatex *.tex
 xelatex *.tex

@@ -1,3 +1,4 @@
+REM for Windows
 del *.aux /s
 del *.bak /s
 del *.log /s
@@ -17,3 +18,5 @@ del *.nav /s
 del *.snm /s
 del *.xdv /s
 del *.vrb /s
+del *.fls /s
+del *.fls /s
