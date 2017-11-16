@@ -1,23 +1,27 @@
-# ÏîÄ¿Ö¸ÄÏ
+# é¡¹ç›®æŒ‡å—
 
-## ÎÄµµ±àÒë
+## æ–‡æ¡£ç¼–è¯‘
 
-ÓÃ `xelatex` ±àÒëÎÄµµ, Èç¹ûÒÑ¾­½«±àÒëÃüÁî¼ÓÈëÂ·¾¶, Windows ÏÂ¿ÉÒÔÖ±½ÓÖ´ĞĞ `runCompile.bat`, Ö´ĞĞ `runDelete.bat` ¿ÉÒÔÇå³ş±àÒë¹ı³ÌÎÄ¼ş.
+ç”¨ `xelatex` ç¼–è¯‘æ–‡æ¡£, å¦‚æœå·²ç»å°†ç¼–è¯‘å‘½ä»¤åŠ å…¥è·¯å¾„, Windows ä¸‹å¯ä»¥ç›´æ¥æ‰§è¡Œ `runCompile.bat`, æ‰§è¡Œ `runDelete.bat` å¯ä»¥æ¸…æ¥šç¼–è¯‘è¿‡ç¨‹æ–‡ä»¶.
 
-## ÎÄ¼şËµÃ÷
+## æ–‡ä»¶è¯´æ˜
 
-- MATLABTips.tex -- Ö÷ÎÄ¼ş
-- diagrams/ -- Í¼±í
-- sections/ -- ÕÂ½Ú, ·âÃæ, ÕªÒª, Ä¿Â¼, ¸½Â¼
-	- sections/abstract.tex -- ÕªÒª
-	- sections/secJustStart.tex -- Ñ§Í¾ÒÁÊ¼
-	- sections/secFeaturesSome.tex -- Ò»Ğ©¹¦ÄÜ
-	- sections/secFunctionsSome.tex -- Ò»Ğ©º¯Êı
-	- sections/secSkillsSome.tex -- Ò»Ğ©¼¼ÇÉ
-	- sections/secEfficientCoding.tex -- ¸ßĞ§±à³Ì
-	- sections/secSpiceHere.tex -- ¶îÍâĞËÈ¤
-	- sections/appendix.tex -- ¸½Â¼
-	- sections/cover.cls -- ·âÃæÉèÖÃ
-- format.cls -- ºê°üºÍ¸ñÊ½ÉèÖÃÎÄ¼ş
-- mcode.sty -- MATLAB ´úÂëÁĞ³ö°ü
-- MATLABTips.pdf -- Éú³ÉµÄPDFÎÄµµ
+- MATLABTips.tex -- ä¸»æ–‡ä»¶
+- diagrams/ -- å›¾è¡¨
+- sections/ -- ç« èŠ‚, å°é¢, æ‘˜è¦, ç›®å½•, é™„å½•
+	- sections/abstract.tex -- æ‘˜è¦
+	- sections/secJustStart.tex -- å­¦é€”ä¼Šå§‹
+	- sections/secFeaturesSome.tex -- ä¸€äº›åŠŸèƒ½
+	- sections/secFunctionsSome.tex -- ä¸€äº›å‡½æ•°
+	- sections/secSkillsSome.tex -- ä¸€äº›æŠ€å·§
+	- sections/secEfficientCoding.tex -- é«˜æ•ˆç¼–ç¨‹
+	- sections/secSpiceHere.tex -- é¢å¤–å…´è¶£
+	- sections/appendix.tex -- é™„å½•
+	- sections/cover.cls -- å°é¢è®¾ç½®
+- format.cls -- å®åŒ…å’Œæ ¼å¼è®¾ç½®æ–‡ä»¶
+- mcode.sty -- MATLAB ä»£ç åˆ—å‡ºåŒ…
+- MATLABTips.pdf -- ç”Ÿæˆçš„PDFæ–‡æ¡£
+
+## å¤‡æ³¨
+
+VSCode å®‰è£…äº†LaTeX Workshop, æ‰“å¼€æ­¤å·¥ç¨‹æ—¶ä¼šæœ‰éƒ¨åˆ†å‘½ä»¤æœ‰é”™è¯¯æç¤º, å¯è‡ªè¡Œç”¨ `xelatex` ç¼–è¯‘(LaTeX Workshop çš„ä¿å­˜æ—¶ç¼–è¯‘æœ‰é—®é¢˜, æš‚ä¸æ¸…æ¥šåŸå› ).
