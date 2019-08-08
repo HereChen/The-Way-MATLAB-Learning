@@ -11,15 +11,11 @@
 ├── docs
 │   ├── README.md
 │   └── UPDATE.md                   # 更新记录
-├── format.cls                      # 配置
+├── format.sty                      # 配置
 ├── MATLABTips.pdf                  # 生成的PDF文档
 ├── MATLABTips.tex                  # LaTeX 主文件
 ├── mcode.sty                       # MATLAB 代码列出包
 ├── README.md
-├── runClean.bat                    # 清除编译生成的临时文件（Windows）
-├── runClean.sh                     # 清除编译生成的临时文件
-├── runCompile.bat                  # 编译（Windows）
-├── runCompile.sh                   # 编译
 └── sections                        # 章节，封面，摘要，目录，附录
     ├── abstract.tex                # 摘要
     ├── appendix.tex                # 附录
