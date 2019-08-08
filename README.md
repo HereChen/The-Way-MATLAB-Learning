@@ -9,3 +9,18 @@
 
 - [项目指南](./docs/README.md)
 - [更新记录](./docs/UPDATE.md)
+
+## 编译
+
+```bash
+# requirements: latexmk, xelatex
+
+# compile
+make
+
+# clean
+make clean
+
+# automatic compile without preview
+make watch
+```
