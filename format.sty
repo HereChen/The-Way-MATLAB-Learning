@@ -76,18 +76,12 @@ body={390pt,530pt},marginparsep=10pt,marginpar=50pt]{geometry}
 % 字体------------------------------------------------------------------
 \usepackage{xeCJK}
 \setmainfont{Times New Roman}
-% TODO: font problem
-% \setCJKmainfont[BoldFont=SimHei]{SimSun}
-% \setCJKfamilyfont{kai}{KaiTi}
-% \newcommand{\kai}{\CJKfamily{kai}}
 
 % 定义注意事项 notation------------------------------------------------------------------
 \usepackage{amsthm}
 \theoremstyle{remark}
 \newtheorem{nota}{Note}[section]
-% TODO: font problem
-% \newcommand{\notation}[1]{\nota{\kai #1}}
-\newcommand{\notation}[1]{\nota{#1}}
+\newcommand{\notation}[1]{\nota{\textit{#1}}}
 
 % item
 \usepackage{mdwlist}          % item 压缩
