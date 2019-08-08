@@ -28,7 +28,3 @@
     ├── secSkillsSome.tex           # 一些技巧
     └── secSpiceHere.tex            # 额外兴趣
 ```
-
-## 备注
-
-VSCode 安装了LaTeX Workshop，打开此工程时会有部分命令有错误提示，可自行用 `xelatex` 编译(LaTeX Workshop 的保存时编译有问题，暂不清楚原因).
