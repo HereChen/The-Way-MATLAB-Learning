@@ -28,6 +28,7 @@ make watch
 
 ```text
 ├── diagrams                        # 图表
+├── code                            # 代码文件
 ├── docs
 │   └── UPDATE.md                   # 更新记录
 ├── format.sty                      # 配置
