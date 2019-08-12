@@ -11,16 +11,28 @@
 
 ## 编译
 
+自行编译，获取最新的内容。
+
+**方式1** 比较通用和简单的编译方式。
+
+```bash
+xelatex MATLABTips.tex
+xelatex MATLABTips.tex
+```
+
+**方式2** 用 latexmk。
+
 ```bash
 # requirements: latexmk, xelatex
+# sudo apt install latexmk
 
-# compile
+# 编译
 make
 
-# clean
+# 清除临时文件
 make clean
 
-# automatic compile without preview
+# 文件变更时编译
 make watch
 ```
 
