@@ -1,35 +1,30 @@
 %!TEX program = xelatex
 % 代码前 \vspace{-0.8cm}
 % 图片画布18cm，设置宽度width=0.9\textwidth
-
 \documentclass[listof = totoc]{article}
 % 加入listof = totoc以解决代码无法列入目录
 
-\usepackage{format}
-\graphicspath{{diagrams/}} 				% 图片路径
+\usepackage{main}
+\graphicspath{{tex/figure/}}      % 图片路径
+\lstinputpath{tex/code/}          % 代码路径
 
 \begin{document}
 
-
-\input{sections/cover} 					% 封面
 \thispagestyle{empty}
-\titleCover
-% \maketitle
+\include{tex/cover} 					    % 封面
 \setcounter{page}{0}
 
+\thispagestyle{empty}
+\include{tex/abstract} 			      % 摘要
+\include{tex/content} 				    % 目录
 
-\include{sections/abstract} 			% 摘要
-\include{sections/content} 				% 目录
+\include{tex/secJustStart} 		    % 章节
+\include{tex/secFeaturesSome}
+\include{tex/secFunctionsSome}
+\include{tex/secSkillsSome}
+\include{tex/secEfficientCoding}
+\include{tex/secSpiceHere}
 
-
-\include{sections/secJustStart} 		% 章节
-\include{sections/secFeaturesSome}
-\include{sections/secFunctionsSome}
-\include{sections/secSkillsSome}
-\include{sections/secEfficientCoding}
-\include{sections/secSpiceHere}
-
-
-\include{sections/appendix} 			% 附录
+\include{tex/appendix}            % 附录
 
 \end{document}

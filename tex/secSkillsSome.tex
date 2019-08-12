@@ -11,16 +11,14 @@
 \paragraph{内存溢出}所谓内存溢出，也就是计算时出现的 Out of memoery.
 
 \begin{figure}[htbp]
-\includegraphics[width=0.6\textwidth]{diagrams/memoryout}
+\includegraphics[width=0.6\textwidth]{memoryout}
 \caption{内存溢出和内存查看}
 \end{figure}
 
 \vspace{-0.8cm}
-\begin{lstlisting}[caption = 生成随机矩阵]
-  matrix = rand(2e+5,2e+5);
-\end{lstlisting}
+\lstinputlisting[language=matlab, caption={生成随机矩阵测试内存溢出}]{secSkillsSome/rand-matrix.m}
 
-\notation{逐渐增大或减小维数，这样可以查看设备能存储最大矩阵的维数。}
+\notation{逐渐增大或减小维数，这样可以测试设备能存储最大矩阵的维数。}
 
 
 \paragraph{内存溢出解决} 简而言之，开源节流。
@@ -48,15 +46,7 @@
 在MATLAB中可以用输入help加函数名来获得获悉使用方法及例子。我们期望对自己编写的函数也实现这样的功能，那么有两个关键点，一是参照MATLAB的内置函数注释格式写好注释(或者参照下面的示例)，二是确保此函数路径已经添加。接下来就可以通过 \mcode{help myfunction} 这样的形式来查看了。
 
 \vspace{-0.8cm}
-\begin{lstlisting}[caption = 自定义帮助]
-  function outputs = myfunction(inputs)
-  %MYFUNCTION this function is bulabula...
-  %   decrible your function here
-  %   see also function1 function2
-
-  %   Reversion: 22-Aug-2013
-  %   2013/08/22  16:58:27
-\end{lstlisting}
+\lstinputlisting[language=matlab, caption={自定义帮助}]{secSkillsSome/define-help-comment.m}
 
 
 
@@ -85,10 +75,7 @@ MATLAB 支持 \LaTeX 的公式输出，在两个地方可能用到公式输出�
 \myenddot
 
 \vspace{-0.8cm}
-\begin{lstlisting}[caption = 图像中的公式输出]
-  y = title('$$y = \sqrt{x}$$');		% 标题
-  set(y,'interpreter','latex');			% 用LaTeX翻译标题
-\end{lstlisting}
+\lstinputlisting[language=matlab, caption={图像中的公式输出}]{secSkillsSome/math-in-figure.m}
 
 
 
@@ -96,38 +83,14 @@ MATLAB 支持 \LaTeX 的公式输出，在两个地方可能用到公式输出�
 
 \subsection{重复向量以构造矩阵}
 
-首先解释一下什么是向量重复构造矩阵，比如有一个向量 \mcode{[1 2 3]}，现在我打算将它构造成 \mcode{[1 2 3; 1 2 3; 1 2 3]}，这就是此小节要解决的内容。
+首先解释一下什么是向量重复构造矩阵（并非是一个专业术语），比如有一个向量 \mcode{[1 2 3]}，现在我打算将它构造成 \mcode{[1 2 3; 1 2 3; 1 2 3]}，这就是此小节要解决的内容。
 
 \vspace{-0.8cm}
-\begin{lstlisting}[caption = 重复向量以构造矩阵]
-  %% repmat 函数方法
-  clear
-  x = 1:1:20000; N = 30000;
-  tic
-  X = repmat(x, N, 1);
-  toc
-
-  %% 矩阵乘法方法
-  clear
-  x = 1:1:20000; N = 30000;
-  tic
-  Y = ones(N,1)*x;
-  toc
-  
-  %% 下标方法
-  clear
-  x = 1:1:20000; N = 30000;
-  tic
-  Z = x(ones(N, 1), :);
-  toc
-\end{lstlisting}
+\lstinputlisting[language=matlab, caption={重复向量以构造矩阵}]{secSkillsSome/repeat-matrix.m}
 
 \vspace{-0.8cm}
-\begin{lstlisting}
-  Elapsed time is 25.953179 seconds.
-  Elapsed time is 217.866385 seconds.
-  Elapsed time is 13.400210 seconds.
-\end{lstlisting}
+\lstinputlisting[language=matlab, nolol]{secSkillsSome/repeat-matrix-result.m}
+
 
 实际上，\mcode{repmat} 用到了第三种，在其源码中可以看的到，但它更加通用。如果是数值，首推第三者。
  \mcode{repmat} 的源码可以通过 \mcode{which repmat} 查看其位置。另外需要提及，测试时每段前面当加 \mcode{clear}，这是要消除由于内存的原因影响后面程序的执行效率。\par
@@ -135,14 +98,6 @@ MATLAB 支持 \LaTeX 的公式输出，在两个地方可能用到公式输出�
 还有一种方式，这种方式可以列重复挨着：
 
 \vspace{-0.4cm}
-\begin{lstlisting}
-  >> blkproc([1 2 3 4 5], [1 1], @(x)repmat(x, 3, 2))
-
-  ans =
-
-  1     1     2     2     3     3     4     4     5     5
-  1     1     2     2     3     3     4     4     5     5
-  1     1     2     2     3     3     4     4     5     5 
-\end{lstlisting}
+\lstinputlisting[language=matlab, nolol]{secSkillsSome/repeat-matrix-2.m}
 
 \notation{可以考虑用上面的某种方法用向量重复来构造三维的矩阵。}

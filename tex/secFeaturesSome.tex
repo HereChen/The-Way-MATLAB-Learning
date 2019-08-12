@@ -104,12 +104,7 @@ startup.m是在MATLAB启动时就执行的脚本。若是需要它，我们需�
 \myenddot
 
 \vspace{-0.8cm}
-\begin{lstlisting}[caption = 我的startup.m]
-clc;                      % 清除Command窗口显示的内容
-cd D:\matlabfile;         % 定位到matlabfile文件夹
-addpath(genpath(pwd));    % 将当前文件夹的所有文件夹及子文件夹添加到路径中
-% pwd为获得当前文件夹路径,即D:\matlabfile
-\end{lstlisting}
+\lstinputlisting[language=matlab, caption={我的startup.m}]{secFeaturesSome/my-startup.m}
 
 这段代码执行3个命令，主要目的还是在于进入到我的工作目录，并添加可能的新的路径(因而用了 \mcode{genpath})。
 
@@ -122,24 +117,13 @@ addpath(genpath(pwd));    % 将当前文件夹的所有文件夹及子文件夹�
 \mcode{tic} 为计时开始，\mcode{toc} 为计时结束。通常用以查看代码/算法执行的时间。
 
 \vspace{-0.8cm}
-\begin{lstlisting}[caption = 计时1]
-tic
-disp('Time recorder...');
-toc
-\end{lstlisting}
+\lstinputlisting[language=matlab, caption={计时1}]{secFeaturesSome/time-recorder-1.m}
 
 \vspace{-0.8cm}
-\begin{lstlisting}[caption=计时2]
-t1 = tic;
-disp('Time recorder...');
-toc(t1)
-\end{lstlisting}
+\lstinputlisting[language=matlab, caption={计时2}]{secFeaturesSome/time-recorder-2.m}
 
 \vspace{-0.8cm}
-\begin{lstlisting}
-Time recorder...
-Elapsed time is 0.007663 seconds.
-\end{lstlisting}
+\lstinputlisting[language=matlab, nolol]{secFeaturesSome/time-recorder-result.m}
 
 两个例子单独的执行效果如上。在使用时可以注意以下几点：
 
@@ -160,14 +144,7 @@ Elapsed time is 0.007663 seconds.
 \mcode{\%} 是注释，\mcode{\%\%} 则是一个单元(同时作为注释)。
 
 \vspace{-0.8cm}
-\begin{lstlisting}[caption=代码单元]
-%% display cell 1
-disp('the first cell.');
-
-%% display cell 2
-disp('the second cell.');
-% 两个百分号与注释之间有空格.
-\end{lstlisting}
+\lstinputlisting[language=matlab, caption={代码单元}]{secFeaturesSome/code-cell.m}
 
 代码单元可在不选中代码的情况下，可以快捷键 \mcode{Ctrl+Shift+Enter} 连续执行。并还有以下好处：
 
@@ -215,9 +192,7 @@ disp('the second cell.');
 \myenddot
 
 \vspace{-0.8cm}
-\begin{lstlisting}[caption = 代码发布]
-publish('test.m','pdf');
-\end{lstlisting}
+\lstinputlisting[language=matlab, caption={代码发布}]{secFeaturesSome/code-publish.m}
 
 \begin{figure}[htbp]
   \includegraphics[width=0.9\textwidth]{publish}
@@ -250,9 +225,7 @@ publish('test.m','pdf');
 首先，通过 \mcode{pcode} 将m文件解析为p后缀文件；然后直接调用该文件。这里给出了针对单个文件的例子，但也可一次解析多个文件。
 
 \vspace{-0.8cm}
-\begin{lstlisting}[caption = 代码保护]
-pcode filename.m
-\end{lstlisting}
+\lstinputlisting[language=matlab, caption={代码保护}]{secFeaturesSome/code-protect.m}
 
 \notation{生成解析文件后，路径下就有两个同名，但是后缀不同的文件。对m文件修改后需要重新解析，不然，会调用较新的m文件，而不是p文件。另外，"解析"一词在这里更多的是指 \mcode{pcode} 的函数作用。}
 
@@ -280,20 +253,13 @@ pcode filename.m
 在编写程序时，会用一些输出来标识警告或者错误，以下是针对这个问题的方法。
 
 \vspace{-0.8cm}
-\begin{lstlisting}[caption = 红色字符串输出]
-fprintf(2,'edit your text here.');
-\end{lstlisting}
-
+\lstinputlisting[language=matlab, caption={红色字符串输出}]{secFeaturesSome/print-string-colored-red.m}
 
 \vspace{-0.8cm}
-\begin{lstlisting}[caption = 警告输出]
-warning('edit your text here.');
-\end{lstlisting}
+\lstinputlisting[language=matlab, caption={警告输出}]{secFeaturesSome/print-warning.m}
 
 \vspace{-0.8cm}
-\begin{lstlisting}[caption = 错误输出]
-error('edit your text here.');
-\end{lstlisting}
+\lstinputlisting[language=matlab, caption={错误输出}]{secFeaturesSome/print-error.m}
 
 \notation{\mcode{warning} 和 \mcode{error} 可以像 \mcode{fprintf} 一样输出字符串或者数值.例如: \\
 \mcode{str = 'I am a string'; warning('\%s',str)}}
@@ -307,8 +273,4 @@ error('edit your text here.');
 Command 窗口的默认显示格式是short，此时显示小数时最多显示4位小数。常用的切换有显示更多的小数，以及将小数作为分数显示。.这里介绍三种格式切换，更多的查看 \mcode{help format}。
 
 \vspace{-0.8cm}
-\begin{lstlisting}[caption = Command窗口显示格式]
-  format short        % 默认格式
-  format long         % 显示更多小数位
-  format rat          % 以分数形式显示
-\end{lstlisting}
+\lstinputlisting[language=matlab, caption={Command窗口数值显示格式设置}]{secFeaturesSome/number-display-setting.m}

@@ -1,0 +1,1 @@
+publish('test.m','pdf');

@@ -27,10 +27,10 @@ profile viewer                    % 查看分析结果
 为矩阵（或向量）预分配内存，并尽量避免改变矩阵的大小。为什么预分配内存呢？实际上，申请新的内存本身就是一种耗费。每当申请需要新的内存存储变量时，MATLAB 都会先查找是否有足够并且逻辑上是连续的内存空间来存储（若没有则会内存溢出，无法继续执行程序）。 对于矩阵，每次对它添加元素时，其所占内存就在改变，这种改变在地址上的本质是，它不是在原有的基础上添加，而是找到一块合适的地址之后，存储到新的空间上，并删除原来空间上的数据。
 
 \vspace{-0.8cm}
-\lstinputlisting[language=matlab, caption={是否预分配内存效率对比}]{code/vs-memory-pre-allocation.m}
+\lstinputlisting[language=matlab, caption={是否预分配内存效率对比}]{secEfficientCoding/memory-pre-allocation.m}
 
 \vspace{-0.8cm}
-\lstinputlisting[language=matlab]{code/vs-memory-pre-allocation-result.m}
+\lstinputlisting[language=matlab, nolol]{secEfficientCoding/memory-pre-allocation-result.m}
 
 
 
@@ -57,20 +57,24 @@ profile viewer                    % 查看分析结果
 矩阵的存储方式以列优先存储，即我们在计算时尽量采用列优先的方式。
 
 \vspace{-0.8cm}
-\lstinputlisting[language=matlab, caption={矩阵不同存取方式效率对比}]{code/vs-matrix-col-row.m}
+\lstinputlisting[language=matlab, caption={矩阵不同存取方式效率对比}]{secEfficientCoding/matrix-col-row.m}
 
 \vspace{-0.8cm}
-\lstinputlisting[language=matlab]{code/vs-matrix-col-row-result.m}
+\lstinputlisting[language=matlab, nolol]{secEfficientCoding/matrix-col-row-result.m}
+
+
+
+
 
 \subsection{函数类型}
 
 不同函数类型的执行效率并一样，在此仅以符号函数和匿名函数作为对比对象。
 
 \vspace{-0.8cm}
-\lstinputlisting[language=matlab, caption={不同函数类型效率对比}]{code/vs-functions.m}
+\lstinputlisting[language=matlab, caption={不同函数类型效率对比}]{secEfficientCoding/functions.m}
 
 \vspace{-0.8cm}
-\lstinputlisting[language=matlab]{code/vs-functions-result.m}
+\lstinputlisting[language=matlab, nolol]{secEfficientCoding/functions-result.m}
 
 
 
@@ -93,10 +97,10 @@ profile viewer                    % 查看分析结果
 实现并行计算包括两个操作，一是打开多核(或者worker)，二是要保证循环计算之间并不存在关联性。
 
 \vspace{-0.8cm}
-\lstinputlisting[language=matlab, caption={并行计算parfor与for效率对比}]{code/vs-parfor-for.m}
+\lstinputlisting[language=matlab, caption={并行计算parfor与for效率对比}]{secEfficientCoding/parfor-for.m}
 
 \vspace{-0.8cm}
-\lstinputlisting[language=matlab]{code/vs-parfor-for-result.m}
+\lstinputlisting[language=matlab, nolol]{secEfficientCoding/parfor-for-result.m}
 
 尽管通常不是用循环来实现的内容，通过转化为不相关的循环计算，就可以用并行计算来实现。
 
