@@ -36,16 +36,20 @@ body={390pt,530pt},marginparsep=10pt,marginpar=50pt]{geometry}
 % 链接
 % ##################################################################
 \usepackage{url,hyperref}
-\hypersetup{pdftitle = {Chen's MATLAB Learning},
-    colorlinks = true,
-    pdfborder = 0 0 0,
-    breaklinks = false}
+\hypersetup{
+  pdfauthor = {陈磊}
+  pdftitle = {MATLAB 学习笔记},
+  colorlinks = true,
+  pdfborder = 0 0 0,
+  breaklinks = false
+}
 
 % 代码
 % ##################################################################
 \usepackage{mcode,listings}
 \newcommand*\lstinputpath[1]{\lstset{inputpath=#1}}
-\lstset{numbers = none,                       % 代码行号
+\lstset{
+  numbers = none,                       % 代码行号
   % numberstyle = \scriptsize,
   % frameround = fttt,
   columns = flexible,                         % 确保复制粘贴代码是正常的                          
