@@ -5,11 +5,7 @@
 通过Profiler这个工具来查看执行程序中占用时间比例，并作有针对性的优化这样可以。
 
 \vspace{-0.8cm}
-\begin{lstlisting}[caption = 用Profiler分析代码性能] 
-profile on                        % 打开profile
-plot(magic(35))                   % 要执行的代码
-profile viewer                    % 查看分析结果
-\end{lstlisting}
+\lstinputlisting[language=matlab, caption={用Profiler分析代码性能}]{secEfficientCoding/open-profile.m}
 
 分析结果包括每部分的占用时间比例，没个函数或语句的执行时间，点击链接可以进入到下一层，以此来逐层查看。
 
