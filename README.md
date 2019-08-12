@@ -27,14 +27,14 @@ make watch
 ## 文件说明
 
 ```text
-├── diagrams                        # 图表
-├── code                            # 代码文件
+├── MATLABTips.tex                  # LaTeX 主文件
+├── main.sty                        # 配置
+├── mcode.sty                       # MATLAB 代码列出包
 ├── docs
 │   └── UPDATE.md                   # 更新记录
-├── format.sty                      # 配置
-├── MATLABTips.tex                  # LaTeX 主文件
-├── mcode.sty                       # MATLAB 代码列出包
-└── sections                        # 章节，封面，摘要，目录，附录
+└── tex                             # 章节，封面，摘要，目录，附录
+    ├── code                        # 代码文件
+    ├── figure                      # 图片
     ├── abstract.tex                # 摘要
     ├── appendix.tex                # 附录
     ├── content.tex                 # 目录
