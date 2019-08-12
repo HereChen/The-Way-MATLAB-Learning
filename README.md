@@ -26,13 +26,13 @@ xelatex MATLABTips.tex
 # requirements: latexmk, xelatex
 # sudo apt install latexmk
 
-# 编译
+# compile/编译
 make
 
-# 清除临时文件
+# clean/清除临时文件
 make clean
 
-# 文件变更时编译
+# automatic compile without preview/文件变更时编译
 make watch
 ```
 
