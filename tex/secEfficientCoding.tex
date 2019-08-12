@@ -17,6 +17,34 @@
 
 
 
+\subsection{矩阵运算}
+
+充分利用 MATLAB 内置的矩阵运算，有两个思路：（1）在计算时尽量利用现有的 MATLAB 内置矩阵计算方式；（2）调整算法，转化为矩阵计算，从而可以利用 MATLAB 内置的计算方法。\par
+
+下面的示例演示利用逻辑运算，求取一个矩阵中大于 3 的元素的总数（值得注意的是，在其他的计算的中，逻辑运算效率通常也比较高）。在这个例子中，如果我们还需要将符合条件的元素存储下来，第二种方式只需要一条语句。
+
+\vspace{-0.8cm}
+\lstinputlisting[language=matlab, caption={矩阵运算-逻辑取值}]{secEfficientCoding/matrix-compute.m}
+
+\vspace{-0.8cm}
+\lstinputlisting[language=matlab, nolol]{secEfficientCoding/matrix-compute-result.m}
+
+第二个示例演示从一个矩阵计算得到另一个矩阵 $h_{i,j} = x_{i,i}x_{j,j} + x_{i,j}^2$。第二种方法可分解为两步：
+
+\begindot
+  \item $x_{i,i}x_{j,j}$。取矩阵对角元素，然后转置相乘，$(x_{1,1}, x_{2,2}, \dots, x_{n,n})^T(x_{1,1}, x_{2,2}, \dots, x_{n,n})$。
+  \item $x_{i,j}^2$。利用 MATLAB 的点乘（按元素相乘）实现。
+\myenddot
+
+\vspace{-0.8cm}
+\lstinputlisting[language=matlab, caption={矩阵运算-算法转换}]{secEfficientCoding/matrix-compute-2.m}
+
+\vspace{-0.8cm}
+\lstinputlisting[language=matlab, nolol]{secEfficientCoding/matrix-compute-2-result.m}
+
+
+
+
 
 \subsection{预分配内存}
 
