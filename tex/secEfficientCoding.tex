@@ -149,6 +149,10 @@
 
 \subsection{其他}
 
-\begin{itemize}
-    \item \textbf{线性方程组求解} \href{https://zhuanlan.zhihu.com/p/30958676}{MATLAB R2017b新函数介绍之decomposition（加速X$\backslash$y）}。沒有新版的MATLAB，无法进行测试. 基本思路是通过分解矩阵加速线性方程组的求解，而\mcode{decomposition}可以根据矩阵特点选择合适的分解方法。方程组求解效率可参照数值分析中的消元法和矩阵分解法(比如LU)。
-\end{itemize}
+\paragraph{线性方程组求解} \href{https://zhuanlan.zhihu.com/p/30958676}{MATLAB R2017b新函数介绍之decomposition（加速X$\backslash$y）}。线性方程组求解的过程，其实就是在分解矩阵。利用 \mcode{decomposition} 加速的基本思路是分解矩阵后，重复使用分解的结果，加速线性方程组的求解。因此一般情况下，适用于需要重复利用同一个矩阵求解的情况。\href{https://www.mathworks.com/help/matlab/ref/decomposition.html}{\mcode{decomposition}} 将根据矩阵特点选择合适的分解方法（不指定分解方法的情况下）。
+
+\vspace{-0.8cm}
+\lstinputlisting[language=matlab, caption={线性方程组求解对比}]{secEfficientCoding/decomposition-linear-equation-system-solve.m}
+
+\vspace{-0.8cm}
+\lstinputlisting[language=matlab, nolol]{secEfficientCoding/decomposition-linear-equation-system-solve-result.m}
